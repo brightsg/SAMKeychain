@@ -158,7 +158,11 @@
 #pragma mark - Accessors
 
 - (void)setPasswordObject:(id<NSCoding>)object {
+	// availability is incorrect macosx(10.11,10.14) 10.11 should be 10.2
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability"
 	self.passwordData = [NSKeyedArchiver archivedDataWithRootObject:object];
+#pragma clang diagnostic pop
 }
 
 
